@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Mission to Mars</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
+
+    </head>
+
+    <body>
+        <div class="container">
+            <div class="row jumbotron text-xs-center">
+                <h1>Mission to Mars</h1>
+                <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Scrape New Data</a></p>
+            </div>
+
+            <div class="row">
+                <h2>Latest Mars News</h2>
+                <h3>{{ mars.news_title }}</h3>
+                <p>{{ mars.news_p }}</p>
+            </div>
+
+            <div class="row">
+                <div class="col-md-8 col-sm-12">
+                    <h2>Featured Mars Image</h2>
+                    <img src= "{{ mars.featured_image_url }}" alt = "Feat_img">
+                </div>
+
+                <div class="col-md-4 col-sm-12">
+                    <h2>Mars Facts</h2>
+                    
+                    
+                    {{  mars_html |safe}}
+                </div>
+            </div>
+
+            <div class="row">
+                <div class = "col-md-12 col-sm-12 text-xs-center">
+                    <h2>Mars Hemispheres</h2>
+                    <hr>
+                </div>             
+            </div>
+
+            <div class="row">
+
+                {% for hemisphere in hemispheres %}
+
+                <div class= "col-md-3 col-sm-6 mr-4">
+                    <div class="card" style="width: 250px;">
+                        <img class="card-img-top center-block" src="{{ hemisphere.img_url }}" alt="{{ hemisphere.title }}" width="240px">
+                        <div class="card-body">
+                            <h5 class ="card_title" style="font-weight: bold; font-size:25px;">{{ hemisphere.title }}</h5>
+                        </div>
+                    </div>
+                </div>
+
+                {% endfor %}
+            
+            </div>
+
+        </div>
+    </body>
+</html>
